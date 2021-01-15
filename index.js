@@ -4,5 +4,9 @@ import store from './state/store/store'
 import { registerRootComponent } from 'expo'
 import App from './App'
 
-const ConnectedApp = () => <Provider store={store}><App /></Provider>
+const ConnectedApp = () =>
+  <Provider store={store}>
+    <App />
+  </Provider>
+  
 registerRootComponent(ConnectedApp)

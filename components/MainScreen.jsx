@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
 import { useSelector } from "react-redux";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View, FlatList, Text } from "react-native";
 import Articles from "../modules/Articles";
 import ArticleIndexDetails from "./ArticleIndexDetails";
 

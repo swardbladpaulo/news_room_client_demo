@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimension,
+  Dimensions,
   Image,
   TouchableOpacity,
 } from "react-native";
@@ -12,13 +12,22 @@ const ArticleIndexDetails = ({ navigation, article }) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate("ArticleShow", { article: article });
+        navigation.navigate("ArticleShow", {article: article})
       }}
     >
-      <Image source={{ uri: article.image }} style={styles.image} />
-      <View style={styles.card}>
-        <Text style={styles.title}>{article.title}</Text>
-        <Text style={styles.subtitle}>{article.category}</Text>
+      <Image 
+        source={{ uri: article.image }}
+        style={styles.image} />
+      <View
+        style={styles.card}>
+        <Text
+          style={styles.title}>
+            {article.title}
+        </Text>
+        <Text
+          style={styles.subtitle}>
+            {article.category}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -29,7 +38,7 @@ export default ArticleIndexDetails;
 const styles = StyleSheet.create({
   card: {
     position: "absolute",
-    width: "Dimensions.get('window').width",
+    width: Dimensions.get('window').width,
     padding: 7,
     paddingLeft: 10,
     paddingRight: 8,
@@ -38,7 +47,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "white",
-    fontSize: 36,
+    fontSize: 30,
+    textAlign: "center"
   },
   subtitle: {
     color: "white",
@@ -46,6 +56,6 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 250,
-    width: "Dimensions.get('window').width",
+    width: Dimensions.get('window').width,
   },
 });

@@ -1,20 +1,34 @@
-import React from 'react'
-import { StyleSheet, Text, View, Dimensions } from 'react-native'
-const ArticleShow = (props) => {
-  const {article}= props.route.params
-  return (
-    <View>
-      <Text>{article.title}</Text>
-    </View>
-  )
-}
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
+import Articles from "../modules/Articles";
 
-export default ArticleShow
+const ArticleShow = (props) => {
+  const { id } = props.route.params.article;
+  const { currentArticle } = useSelector((state) => state);
+
+  useEffect(() => {
+    Articles.show(id)
+  }, [])
+
+    return (
+      <View style={{flex: 1}}>
+        <Image 
+          source={{uri: currentArticle.image}}
+          style={styles.image}
+        />
+        <Text style={styles.title}>{currentArticle.title}</Text>
+        <Text style={styles.body}>{currentArticle.body}</Text>
+      </View>
+    )
+  }
+
+export default ArticleShow;
 
 const styles = StyleSheet.create({
   card: {
     position: "absolute",
-    width: "Dimensions.get('window').width",
+    width: Dimensions.get("window").width,
     padding: 7,
     paddingLeft: 10,
     paddingRight: 8,
@@ -22,15 +36,23 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.3)",
   },
   title: {
-    color: "white",
-    fontSize: 36,
+    padding: 20,
+    color: "red",
+    fontSize: 26,
+    fontWeight: "bold",
+    textAlign: "center",
   },
   subtitle: {
     color: "white",
     fontSize: 16,
   },
+  body: {
+    padding: 18,
+    color: "black",
+    fontSize: 18,
+  },
   image: {
     height: 250,
-    width: "Dimensions.get('window').width",
+    width: Dimensions.get("window").width,
   },
 });
