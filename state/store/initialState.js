@@ -1,8 +1,7 @@
 const initialState = {
-  appTitle: 'News Of The World',
+  appTitle: "News Of The World",
   articles: [],
-  currentArticle: {}
-}
+  currentArticle: {},
+};
 
-
-export default initialState
+export default initialState;

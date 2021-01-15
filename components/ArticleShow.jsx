@@ -8,20 +8,17 @@ const ArticleShow = (props) => {
   const { currentArticle } = useSelector((state) => state);
 
   useEffect(() => {
-    Articles.show(id)
-  }, [])
+    Articles.show(id);
+  }, []);
 
-    return (
-      <View style={{flex: 1}}>
-        <Image 
-          source={{uri: currentArticle.image}}
-          style={styles.image}
-        />
-        <Text style={styles.title}>{currentArticle.title}</Text>
-        <Text style={styles.body}>{currentArticle.body}</Text>
-      </View>
-    )
-  }
+  return (
+    <View style={{ flex: 1 }}>
+      <Image source={{ uri: currentArticle.image }} style={styles.image} />
+      <Text style={styles.title}>{currentArticle.title}</Text>
+      <Text style={styles.body}>{currentArticle.body}</Text>
+    </View>
+  );
+};
 
 export default ArticleShow;
 
