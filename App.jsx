@@ -2,49 +2,67 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import MainScreen from "./components/MainScreen";
-import ArticleShow from "./components/ArticleShow";
+import MainScreen from "./app/components/MainScreen";
+import ArticleShow from "./app/components/ArticleShow";
+import LoginScreen from "./app/components/LoginScreen";
+import { Ionicons } from "@expo/vector-icons";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 const App = () => {
-  const { appTitle, currentArticle } = useSelector((state) => state);
+  const { appTitle } = useSelector(state => state)
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Start"
           component={MainScreen}
-          options={{
+          options={(props) => ({
             title: appTitle,
-            headerStyle: {
-              backgroundColor: "red",
+            headerRight: () => {
+              return (
+                <Ionicons
+                  name="person"
+                  size={24}
+                  color="white"
+                  onPress={() => props.navigation.navigate('Login')}
+                  style={{marginRight: 10}}
+                />
+              )
             },
-            headerTitleStyle: {
-              color: "white",
-              fontSize: 22,
-              textAlign: "center",
-            },
-          }}
+            ...styles
+          })}
         />
+
         <Stack.Screen
           name="ArticleShow"
           component={ArticleShow}
           options={{
-            title: currentArticle.title,
-            headerStyle: {
-              backgroundColor: "orange",
-            },
-            headerTitleStyle: {
-              color: "white",
-              fontSize: 22,
-              textAlign: "left",
-            },
+            title: appTitle,
+            ...styles
           }}
+        />
+
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
-export default App;
+const styles = {
+  headerStyle: {
+    backgroundColor: 'red'
+  },
+  headerTitleStyle: {
+    color: 'white',
+    fontSize: 21,
+    fontWeight: 'bold'
+  }
+}
+
+export default App
+
+

@@ -13,7 +13,9 @@ const ArticleShow = (props) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Image source={{ uri: currentArticle.image }} style={styles.image} />
+      <Image
+        source={{ uri: currentArticle.image }}
+        style={styles.image} />
       <Text style={styles.title}>{currentArticle.title}</Text>
       <Text style={styles.body}>{currentArticle.body}</Text>
     </View>
